@@ -1,26 +1,34 @@
 import random
+import io
 
 import utilities as u
 import alphabets as al
 
 def code_text(code: int, text: str) -> str:
-    new_text = str()
+    text = text.lower() #TODO: to program only works in lowercase, not in uppercase
+    coded_text = io.StringIO()
+
+    len_alphabet = len(al.es_alphabet)
 
     for letter in text:
-        letter = letter.lower() #TODO: to program only works in lowercase, not in uppercase
+        if letter not in al.es_alphabet:
+            coded_text.write(letter)
+            continue
 
-        if letter in al.es_alphabet:
-            letter_num = al.es_alphabet_letter_to_num[letter]
-            new_letter_num = letter_num + code
-            
-            if (new_letter_num % len(al.es_alphabet)) == 0:
-                letter = al.es_alphabet_num_to_letter[len(al.es_alphabet)]
-            else:
-                letter = al.es_alphabet_num_to_letter[new_letter_num % len(al.es_alphabet)]
-        
-        new_text += letter
-        
-    return new_text
+        coded_text.write(cesar_cipher(letter, code, len_alphabet))
+
+    return coded_text.getvalue()
+
+
+def cesar_cipher(letter: str, code: int, len_alphabet: int) -> str:
+    letter_num = al.es_alphabet_letter_to_num[letter]
+    new_letter_num = (letter_num + code) % len_alphabet
+
+    if new_letter_num == 0:
+        return al.es_alphabet_num_to_letter[len_alphabet]
+
+    return al.es_alphabet_num_to_letter[new_letter_num]
+
 
 if __name__ == "__main__":
     code = random.randint(0, len(al.es_alphabet) - 1)
@@ -32,9 +40,9 @@ if __name__ == "__main__":
     
     while True:
         save = input("Do you want save the text in a file? (Y/N) ")
-        if save in ["Y", "y", "N", "n"]:
+        if save in ("Y", "y", "N", "n"):
             break
         print("Enter a valid answer")
     
-    if save == "Y" or save == "y":
+    if save in ("Y", "y"):
         u.write_file(f"coded_{file}", coded_text)
