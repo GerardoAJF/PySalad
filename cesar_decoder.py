@@ -1,46 +1,55 @@
+import io
+
 import utilities as u
 import alphabets as al
 
-def calculate_steps(text: str) -> list:
-    text = u.format_text(text)
-    steps = list()
+def calculate_codes(text: str) -> list:
+    text_encode = u.format_text(text)
+    codes = list()
 
-    commons_letter = u.count_letters(text)
-    common_letter = max(commons_letter, key=commons_letter.get)
+    len_alphabet = len(al.es_alphabet)
+
+    commons_letter = u.count_letters(text_encode)
+    common_letter_num = al.es_alphabet_letter_to_num[max(commons_letter, key=commons_letter.get)]
 
     for al_common_letter in al.es_common_letters:
-        step = al.es_alphabet_letter_to_num[common_letter] - al.es_alphabet_letter_to_num[al_common_letter]
-        
-        if step < 0:
-            step = (len(al.es_alphabet) - al.es_alphabet_letter_to_num[al_common_letter]) + al.es_alphabet_letter_to_num[common_letter]
+        al_common_letter_num = al.es_alphabet_letter_to_num[al_common_letter]
 
-        steps.append(step)
-    return steps
+        code = common_letter_num - al_common_letter_num
+        if code < 0:
+            code = len_alphabet + code
+        codes.append(code)
+
+    return codes
 
 
 def decode_text(text: str):
-    text = text.lower()
+    text_coded = text.lower()  # TODO: to program only works in lowercase, not in uppercase
     decoded_texts = list()
 
-    steps = calculate_steps(text)
-    for step in steps:
-        new_text = ""
+    len_alphabet = len(al.es_alphabet)
 
-        for letter in text:
-            if letter in al.es_alphabet:
-                letter_num = al.es_alphabet_letter_to_num[letter]
-                new_letter_num = letter_num - step
+    codes = calculate_codes(text_coded)
 
-                if new_letter_num <= 0:
-                    letter = al.es_alphabet_num_to_letter[len(al.es_alphabet) + new_letter_num]
-                else:
-                    letter = al.es_alphabet_num_to_letter[new_letter_num]
+    for code in codes:
+        decoded_text = io.StringIO()
+        for letter in text_coded:
+            if letter not in al.es_alphabet:
+                decoded_text.write(letter)
+                continue
 
-            new_text += letter
+            letter_num = al.es_alphabet_letter_to_num[letter]
+            new_letter_num = letter_num - code
 
-        decoded_texts.append(new_text)
+            if new_letter_num <= 0:
+                letter = al.es_alphabet_num_to_letter[len_alphabet + new_letter_num]
+            else:
+                letter = al.es_alphabet_num_to_letter[new_letter_num]
 
-    return zip(decoded_texts, steps)
+            decoded_text.write(letter)
+
+        decoded_texts.append((decoded_text.getvalue(), code))
+    return decoded_texts
 
 
 if __name__ == "__main__":
