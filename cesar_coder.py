@@ -5,12 +5,12 @@ import utilities as u
 import alphabets as al
 
 def code_text(code: int, text: str) -> str:
-    text = text.lower() #TODO: to program only works in lowercase, not in uppercase
+    text_code = text.lower() #TODO: to program only works in lowercase, not in uppercase
     coded_text = io.StringIO()
 
     len_alphabet = len(al.es_alphabet)
 
-    for letter in text:
+    for letter in text_code:
         if letter not in al.es_alphabet:
             coded_text.write(letter)
             continue
