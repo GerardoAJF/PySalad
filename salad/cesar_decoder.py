@@ -1,9 +1,9 @@
 import io
 
-import salad.utilities as u
+import utilities as u
 import alphabets as al
 
-def calculate_codes(text: str) -> list:
+def cesar_decode(text: str) -> list:
     text_encode = u.format_text(text)
     codes = list()
 
@@ -13,7 +13,7 @@ def calculate_codes(text: str) -> list:
     common_letter_num = al.es_alphabet_letter_to_num[max(commons_letter, key=commons_letter.get)]
 
     for al_common_letter in al.es_common_letters:
-        al_common_letter_num = al.es_alphabet_letter_to_num[al_common_letter]
+        al_common_letter_num = al.es_alphabet_letter_to_num[al_common_letter[0]]
 
         code = common_letter_num - al_common_letter_num
         if code < 0:
@@ -24,17 +24,16 @@ def calculate_codes(text: str) -> list:
 
 
 def decode_text(text: str):
-    text_coded = text.lower()  # TODO: to program only works in lowercase, not in uppercase
     decoded_texts = list()
 
     len_alphabet = len(al.es_alphabet)
 
-    codes = calculate_codes(text_coded)
+    codes = cesar_decode(text)
 
     for code in codes:
         decoded_text = io.StringIO()
-        for letter in text_coded:
-            if letter not in al.es_alphabet:
+        for letter in text:
+            if letter not in al.es_alphabet_letters:
                 decoded_text.write(letter)
                 continue
 

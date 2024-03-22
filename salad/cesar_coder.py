@@ -1,17 +1,16 @@
 import random
 import io
 
-import salad.utilities as u
+import utilities as u
 import alphabets as al
 
 def code_text(code: int, text: str) -> str:
-    text_code = text.lower() #TODO: to program only works in lowercase, not in uppercase
     coded_text = io.StringIO()
 
     len_alphabet = len(al.es_alphabet)
 
-    for letter in text_code:
-        if letter not in al.es_alphabet:
+    for letter in text:
+        if letter not in al.es_alphabet_letters:
             coded_text.write(letter)
             continue
 
@@ -39,7 +38,7 @@ if __name__ == "__main__":
     print(coded_text)
     
     while True:
-        save = input("Do you want save the text in a file? (Y/N)")
+        save = input("Do you want save the text in a file? (Y/N) ")
         if save in ("Y", "y", "N", "n"):
             break
         print("Enter a valid answer")
