@@ -1,6 +1,6 @@
 import io
 
-import utilities as u
+import salad.utilities as u
 import alphabets as al
 
 def calculate_codes(text: str) -> list:

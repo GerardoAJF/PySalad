@@ -1,7 +1,7 @@
 import random
 import io
 
-import utilities as u
+import salad.utilities as u
 import alphabets as al
 
 def code_text(code: int, text: str) -> str:
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     print(coded_text)
     
     while True:
-        save = input("Do you want save the text in a file? (Y/N) ")
+        save = input("Do you want save the text in a file? (Y/N)")
         if save in ("Y", "y", "N", "n"):
             break
         print("Enter a valid answer")
