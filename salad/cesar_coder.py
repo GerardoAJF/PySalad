@@ -21,12 +21,12 @@ def code_text(code: int, text: str) -> str:
 
 def cesar_cipher(letter: str, code: int, len_alphabet: int) -> str:
     letter_num = al.es_alphabet_letter_to_num[letter]
-    new_letter_num = (letter_num + code) % len_alphabet
+    new_letter_num = (letter_num[0] + code) % len_alphabet
 
     if new_letter_num == 0:
-        return al.es_alphabet_num_to_letter[len_alphabet]
+        return al.es_alphabet_num_to_letter[(len_alphabet, letter_num[1] % 2)]
 
-    return al.es_alphabet_num_to_letter[new_letter_num]
+    return al.es_alphabet_num_to_letter[(new_letter_num, letter_num[1] % 2)]
 
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ def cesar_decode(text: str) -> list:
     for al_common_letter in al.es_common_letters:
         al_common_letter_num = al.es_alphabet_letter_to_num[al_common_letter[0]]
 
-        code = common_letter_num - al_common_letter_num
+        code = common_letter_num[0] - al_common_letter_num[0]
         if code < 0:
             code = len_alphabet + code
         codes.append(code)
@@ -38,12 +38,12 @@ def decode_text(text: str):
                 continue
 
             letter_num = al.es_alphabet_letter_to_num[letter]
-            new_letter_num = letter_num - code
+            new_letter_num = letter_num[0] - code
 
             if new_letter_num <= 0:
-                letter = al.es_alphabet_num_to_letter[len_alphabet + new_letter_num]
+                letter = al.es_alphabet_num_to_letter[(len_alphabet + new_letter_num), letter_num[1]]
             else:
-                letter = al.es_alphabet_num_to_letter[new_letter_num]
+                letter = al.es_alphabet_num_to_letter[(new_letter_num, letter_num[1])]
 
             decoded_text.write(letter)
 
