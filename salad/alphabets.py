@@ -1,6 +1,3 @@
-
-#TODO: Add support to multiple alphabets
-
 en_alphabet = (
     ("a", "A"),
     ("b", "B"),
@@ -27,7 +24,7 @@ en_alphabet = (
     ("w", "W"),
     ("x", "X"),
     ("y", "Y"),
-    ("z", "Z"),
+    ("z", "Z")
 )
 
 en_alphabet_letters = tuple(letter for letters in en_alphabet for letter in letters)
@@ -79,7 +76,7 @@ es_alphabet = (
     ("w", "W"),
     ("x", "X"),
     ("y", "Y"),
-    ("z", "Z")
+    ("z", "Z"),
 )
 es_alphabet_letters = tuple(letter for letters in es_alphabet for letter in letters)
 
@@ -100,3 +97,25 @@ es_common_letters = (
     ("s", "S"),
     ("r", "R")
 )
+
+# ***********************************************************************************
+
+alphabets = {
+    "en": {
+        "alphabet": en_alphabet,
+        "len": len(en_alphabet),
+        "letters": en_alphabet_letters,
+        "letter_to_num": en_alphabet_letter_to_num,
+        "num_to_letter": en_alphabet_num_to_letter,
+        "common_letters": en_common_letters
+    },
+    "es": {
+        "alphabet": es_alphabet,
+        "len": len(es_alphabet),
+        "letters": es_alphabet_letters,
+        "letter_to_num": es_alphabet_letter_to_num,
+        "num_to_letter": es_alphabet_num_to_letter,
+        "common_letters": es_common_letters
+    }
+}
+
