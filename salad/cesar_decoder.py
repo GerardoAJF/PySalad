@@ -1,9 +1,10 @@
 import io
+import typing as t
 
 import utilities as u
 import alphabets as al
 
-def cesar_decode(text: str) -> list:
+def cesar_decode(text: str) -> t.List[int]:
     text_encode = u.format_text(text)
     codes = list()
 
@@ -23,7 +24,7 @@ def cesar_decode(text: str) -> list:
     return codes
 
 
-def decode_text(text: str):
+def decode_text(text: str) -> t.List[t.Tuple[str, int]]:
     decoded_texts = list()
 
     len_alphabet = len(al.es_alphabet)

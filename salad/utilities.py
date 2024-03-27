@@ -1,3 +1,5 @@
+import typing as t
+
 def read_file(file_name: str) -> str:
     text = str()
 
@@ -18,7 +20,7 @@ def format_text(text: str) -> str:
     return text
 
 
-def count_letters(text: str) -> dict:
+def count_letters(text: str) -> t.Dict[str, int]:
     letters = dict()
     
     for letter in text:

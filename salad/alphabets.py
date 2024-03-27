@@ -1,3 +1,6 @@
+
+#TODO: Add support to multiple alphabets
+
 en_alphabet = (
     ("a", "A"),
     ("b", "B"),
