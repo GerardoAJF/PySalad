@@ -15,11 +15,6 @@ def write_file(file_name: str, text: str) -> None:
         file.write(text)
 
 
-def format_text(text: str) -> str:
-    text = text.replace(" ", "").strip()
-    return text
-
-
 def count_letters(text: str) -> t.Dict[str, int]:
     letters = dict()
     

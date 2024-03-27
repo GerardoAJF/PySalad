@@ -6,7 +6,7 @@ import user as us
 import alphabets as al
 
 def cesar_decode(text: str, alphabet: dict) -> t.List[int]:
-    text_encode = u.format_text(text)
+    text_encode = remove_special_characters(text, alphabet)
     codes = list()
 
     commons_letter = u.count_letters(text_encode)
@@ -21,6 +21,18 @@ def cesar_decode(text: str, alphabet: dict) -> t.List[int]:
         codes.append(code)
 
     return codes
+
+
+def remove_special_characters(text: str, alphabet: dict) -> str:
+    format_text = io.StringIO()
+    
+    for letter in text:
+        if letter not in alphabet["letters"]:
+            continue
+
+        format_text.write(letter)
+    
+    return format_text.getvalue()
 
 
 def decode_text(text: str, alphabet: dict) -> t.List[t.Tuple[str, int]]:
@@ -51,15 +63,13 @@ def decode_text(text: str, alphabet: dict) -> t.List[t.Tuple[str, int]]:
 
 if __name__ == "__main__":
     alphabet = al.alphabets[us.select_alphabet()]
-    
-    file = input("\nEnter the name file:\n")
 
-    text = ""
-    for decoded_text, code in decode_text(u.read_file(file), alphabet):        
-        text += f"\nTrying Code: {code}---------------------"
-        text += f"\n{decoded_text}"
-        text += "\n"
+    coded_text = us.read_file()
 
-    print(text)
+    text = io.StringIO()
+    for decoded_text, code in decode_text(coded_text, alphabet): 
+        text.write(f"Trying Code: {code}---------------------\n")
+        text.write(f"{decoded_text}\n\n")
+    print(text.getvalue(), end="")
 
-    u.write_file(f"decoded_{file}", text)
+    us.save_file(text.getvalue())

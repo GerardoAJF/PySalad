@@ -1,6 +1,9 @@
-import alphabets as al
+import io
 
-def select_alphabet():
+import alphabets as al
+import utilities as u
+
+def select_alphabet() -> str:
     alphabet_options = tuple(al.alphabets.keys())
     
     print("Select the alphabet you want to use: ")
@@ -12,6 +15,68 @@ def select_alphabet():
         if alphabet_selected in alphabet_options:
             break
             
-        print("Please enter a valid alphabet\n")
+        print("Enter a valid alphabet\n")
         
+    print()
     return alphabet_selected
+
+
+def read_file() -> str:
+    print("Read a file?: ")
+
+    file = yes_or_no_answer()
+
+    if file:
+        print("Enter the name of the file: ")
+        file_name = input(">>")
+        text = u.read_file(file_name)
+    else:
+        print("Enter the text: ")
+        text = get_text()
+
+    print()
+    return text
+
+
+def get_text() -> str:
+    text = io.StringIO()
+
+    while True:
+        inputs = input(">>")
+        if not inputs:
+            break
+
+        text.write(f"{inputs}\n")
+
+    return text.getvalue()
+
+
+def save_file(text: str) -> None:
+    print("Save the text in a file?:")
+
+    save = yes_or_no_answer()
+
+    if save:
+        print("Enter the name of the new file: ")
+        file_name = input(">>")
+
+        if not file_name.endswith(".txt"):
+            file_name = file_name + ".txt"
+
+        u.write_file(file_name, text)
+    print()
+
+
+def yes_or_no_answer() -> bool:
+    print("Options: (Y/N)")
+    while True:
+        answer = input(">>")
+        if answer in ("Y", "y", "N", "n"):
+            break
+
+        print("Enter a valid answer\n")
+
+    print()
+    if answer in ("Y", "y"):
+        return True
+    return False
