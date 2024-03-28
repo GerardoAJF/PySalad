@@ -44,7 +44,8 @@ en_common_letters = (
     ("a", "A"), 
     ("r", "R"), 
     ("i", "I"), 
-    ("o", "O")
+    ("o", "O"),
+    ("t", "T")
 )
 
 # ***********************************************************************************
@@ -90,12 +91,15 @@ for num, letters in es_alphabet_values:
         es_alphabet_letter_to_num[letter] = (num + 1, letter_num)
         es_alphabet_num_to_letter[(num + 1, letter_num)] = letter
 
+
+# TODO: allow the user set the number of letter to use
 es_common_letters = (
     ("e", "E", "é", "É"),
     ("a", "A", "á", "Á"),
     ("o", "O", "ó", "Ó"),
     ("s", "S"),
-    ("r", "R")
+    ("r", "R"),
+    ("n", "N")
 )
 
 # ***********************************************************************************

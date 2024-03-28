@@ -17,6 +17,7 @@ def write_file(file_name: str, text: str) -> None:
 
 def count_letters(text: str) -> t.Dict[str, int]:
     letters = dict()
+    text = text.lower()
     
     for letter in text:
         if letter not in letters:
