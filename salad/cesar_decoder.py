@@ -1,15 +1,15 @@
 import io
 import typing as t
 
-import utilities as u
-import user as us
-import alphabets as al
+from salad.alphabets import alphabets
+from salad.utilities import count_letters
+from salad.user import select_alphabet, get_file, save_file
 
 def cesar_decode(text: str, alphabet: dict) -> t.List[int]:
     text_encode = remove_special_characters(text, alphabet)
     codes = list()
 
-    commons_letter = u.count_letters(text_encode)
+    commons_letter = count_letters(text_encode)
     common_letter_num = alphabet["letter_to_num"][max(commons_letter, key=commons_letter.get)]
 
     for al_common_letter in alphabet["common_letters"]:
@@ -62,9 +62,9 @@ def decode_text(text: str, alphabet: dict) -> t.List[t.Tuple[str, int]]:
 
 
 if __name__ == "__main__":
-    alphabet = al.alphabets[us.select_alphabet()]
+    alphabet = alphabets[select_alphabet()]
 
-    coded_text = us.read_file()
+    coded_text = get_file()
 
     text = io.StringIO()
     for decoded_text, code in decode_text(coded_text, alphabet): 
@@ -72,4 +72,4 @@ if __name__ == "__main__":
         text.write(f"{decoded_text}\n\n")
     print(text.getvalue(), end="")
 
-    us.save_file(text.getvalue())
+    save_file(text.getvalue())

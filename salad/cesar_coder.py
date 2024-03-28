@@ -1,9 +1,8 @@
 import random
 import io
 
-import utilities as u
-import user as us
-import alphabets as al
+from salad.alphabets import alphabets
+from salad.user import yes_or_no_answer, select_alphabet, get_file, save_file
 
 def code_text(code: int, text: str, alphabet: dict) -> str:
     coded_text = io.StringIO()
@@ -30,7 +29,7 @@ def cesar_cipher(letter: str, code: int, alphabet: dict) -> str:
 
 def create_code(alphabet) -> int:
     print("Create a random code?:")
-    random_code = us.yes_or_no_answer()
+    random_code = yes_or_no_answer()
 
     if random_code:
         code = random.randint(1, alphabet["len"]-1)
@@ -50,13 +49,13 @@ def create_code(alphabet) -> int:
 
 
 if __name__ == "__main__":
-    alphabet = al.alphabets[us.select_alphabet()]
+    alphabet = alphabets[select_alphabet()]
 
     code = create_code(alphabet)
     print(f"-------CODE: {code}------- ")
 
-    text = us.read_file()
+    text = get_file()
     coded_text = code_text(code, text, alphabet)
     print(coded_text, "\n")
 
-    us.save_file(coded_text)
+    save_file(coded_text)

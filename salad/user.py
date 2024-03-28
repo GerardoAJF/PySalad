@@ -1,10 +1,10 @@
 import io
 
-import alphabets as al
-import utilities as u
+from salad.alphabets import alphabets
+from salad.utilities import read_file, write_file
 
 def select_alphabet() -> str:
-    alphabet_options = tuple(al.alphabets.keys())
+    alphabet_options = tuple(alphabets.keys())
     
     print("Select the alphabet you want to use: ")
     print(f"The options are: {alphabet_options}")
@@ -21,15 +21,15 @@ def select_alphabet() -> str:
     return alphabet_selected
 
 
-def read_file() -> str:
+def get_file() -> str:
     print("Read a file?: ")
 
     file = yes_or_no_answer()
 
     if file:
-        print("Enter the name of the file: ")
+        print("Enter the name of the file: ")  # TODO: work with global routes too
         file_name = input(">>")
-        text = u.read_file(file_name)
+        text = read_file(file_name)
     else:
         print("Enter the text: ")
         text = get_text()
@@ -63,7 +63,7 @@ def save_file(text: str) -> None:
         if not file_name.endswith(".txt"):
             file_name = file_name + ".txt"
 
-        u.write_file(file_name, text)
+        write_file(file_name, text)
     print()
 
 
