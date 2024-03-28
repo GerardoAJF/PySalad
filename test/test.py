@@ -2,10 +2,10 @@ import sys
 
 sys.path.append("../salad")
 
-from salad import alphabets
-from salad import count_letters
-from salad import cesar_cipher, code_text
-from salad import remove_special_characters, cesar_decode, decode_text
+from pysalad import alphabets
+from pysalad import count_letters
+from pysalad import cesar_cipher, code_text
+from pysalad import remove_special_characters, cesar_decode, decode_text
 
 
 def test_count_letters():

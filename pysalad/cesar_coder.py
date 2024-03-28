@@ -1,8 +1,8 @@
 import random
 import io
 
-from salad.alphabets import alphabets
-from salad.user import yes_or_no_answer, select_alphabet, get_file, save_file
+from pysalad.alphabets import alphabets
+from pysalad.user import yes_or_no_answer, select_alphabet, get_file, save_file
 
 def code_text(code: int, text: str, alphabet: dict) -> str:
     coded_text = io.StringIO()

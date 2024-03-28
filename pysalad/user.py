@@ -1,7 +1,7 @@
 import io
 
-from salad.alphabets import alphabets
-from salad.utilities import read_file, write_file
+from pysalad.alphabets import alphabets
+from pysalad.utilities import read_file, write_file
 
 def select_alphabet() -> str:
     alphabet_options = tuple(alphabets.keys())

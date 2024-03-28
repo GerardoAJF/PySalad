@@ -1,10 +1,10 @@
 import io
 
-from salad import alphabets
-from salad import code_text, decode_text
+from pysalad import alphabets
+from pysalad import code_text, decode_text
 
-from salad.cesar_coder import create_code
-from salad.user import select_alphabet, get_file, save_file
+from pysalad.cesar_coder import create_code
+from pysalad.user import select_alphabet, get_file, save_file
 
 def cesar_coder():
     alphabet = alphabets[select_alphabet()]

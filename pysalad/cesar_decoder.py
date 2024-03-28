@@ -1,9 +1,9 @@
 import io
 import typing as t
 
-from salad.alphabets import alphabets
-from salad.utilities import count_letters
-from salad.user import select_alphabet, get_file, save_file
+from pysalad.alphabets import alphabets
+from pysalad.utilities import count_letters
+from pysalad.user import select_alphabet, get_file, save_file
 
 def cesar_decode(text: str, alphabet: dict) -> t.List[int]:
     text_encode = remove_special_characters(text, alphabet)
