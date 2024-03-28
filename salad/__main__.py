@@ -10,7 +10,6 @@ def cesar_coder():
     alphabet = alphabets[select_alphabet()]
 
     code = create_code(alphabet)
-    print(f"-------CODE: {code}------- ")
 
     text = get_file()
     coded_text = code_text(code, text, alphabet)

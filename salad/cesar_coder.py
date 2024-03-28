@@ -35,15 +35,16 @@ def create_code(alphabet) -> int:
         code = random.randint(1, alphabet["len"]-1)
     else:
         print("Enter a code:")
-        
+
         while True:
             code = input(">>")
             if code.isnumeric() and int(code) <= (alphabet["len"]-1) and int(code) >= 1:
                 code = int(code)
                 break
-                
+
             print("Enter a valid code\n")
-    
+
+    print(f"The CODE is: {code}")
     print()
     return code
 
