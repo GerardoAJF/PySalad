@@ -41,11 +41,31 @@ for num, letters in en_alphabet_values:
 
 en_common_letters = (
     ("e", "E"), 
+    ("t", "T"), 
     ("a", "A"), 
-    ("r", "R"), 
-    ("i", "I"), 
-    ("o", "O"),
-    ("t", "T")
+    ("o", "O"), 
+    ("i", "I"),
+    ("n", "N"),
+    ("s", "S"),
+    ("r", "R"),
+    ("h", "H"),
+    ("l", "L"),
+    ("d", "D"),
+    ("c", "C"),
+    ("u", "U"),
+    ("m", "M"),
+    ("f", "F"),
+    ("p", "P"),
+    ("g", "G"),
+    ("w", "W"),
+    ("y", "Y"),
+    ("b", "B"),
+    ("v", "V"),
+    ("k", "K"),
+    ("x", "X"),
+    ("j", "J"),
+    ("q", "Q"),
+    ("z", "Z")
 )
 
 # ***********************************************************************************
@@ -77,7 +97,7 @@ es_alphabet = (
     ("w", "W"),
     ("x", "X"),
     ("y", "Y"),
-    ("z", "Z"),
+    ("z", "Z")
 )
 es_alphabet_letters = tuple(letter for letters in es_alphabet for letter in letters)
 
@@ -92,14 +112,35 @@ for num, letters in es_alphabet_values:
         es_alphabet_num_to_letter[(num + 1, letter_num)] = letter
 
 
-# TODO: allow the user set the number of letter to use
 es_common_letters = (
     ("e", "E", "é", "É"),
     ("a", "A", "á", "Á"),
     ("o", "O", "ó", "Ó"),
     ("s", "S"),
     ("r", "R"),
-    ("n", "N")
+    ("n", "N"),
+    ("i", "I", "í", "Í"),
+    ("d", "D"),
+    ("l", "L"),
+    ("c", "C"),
+    ("t", "T"),
+    ("n", "N"),
+    ("u", "U", "u", "Ú"),
+    ("m", "M"),
+    ("p", "P"),
+    ("b", "B"),
+    ("g", "G"),
+    ("y", "Y"),
+    ("v", "V"),
+    ("q", "Q"),
+    ("h", "H"),
+    ("f", "F"),
+    ("z", "Z"),
+    ("j", "J"),
+    ("ñ", "Ñ"),
+    ("x", "X"),
+    ("w", "W"),
+    ("k", "K")
 )
 
 # ***********************************************************************************

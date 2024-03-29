@@ -4,6 +4,7 @@ from pysalad import alphabets
 from pysalad import code_text, decode_text
 
 from pysalad.cesar_coder import create_code
+from pysalad.cesar_decoder import get_number_codes
 from pysalad.user import select_alphabet, get_file, save_file
 
 def cesar_coder():
@@ -23,8 +24,10 @@ def cesar_decoder():
 
     coded_text = get_file()
 
+    number_codes = get_number_codes()
+
     text = io.StringIO()
-    for decoded_text, code in decode_text(coded_text, alphabet): 
+    for decoded_text, code in decode_text(coded_text, alphabet, number_codes): 
         text.write(f"Trying Code: {code}---------------------\n")
         text.write(f"{decoded_text}\n\n")
     print(text.getvalue(), end="")

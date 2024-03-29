@@ -44,9 +44,9 @@ def create_code(alphabet) -> int:
     print("Create a random code?:")
     random_code = yes_or_no_answer()
 
-    if random_code:
-        code = random.randint(1, alphabet["len"]-1)
-    else:
+    code = random.randint(1, alphabet["len"]-1)
+    
+    if not random_code:
         print("Enter a code:")
 
         while True:
