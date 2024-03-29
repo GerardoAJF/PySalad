@@ -1,11 +1,13 @@
 import io
 import typing as t
 
-from pysalad.alphabets import alphabets
 from pysalad.utilities import count_letters
-from pysalad.user import select_alphabet, get_file, save_file
 
 def cesar_decode(text: str, alphabet: dict) -> t.List[int]:
+    """
+    Take the text, and assuming that the most common letter is one of the most common letters in the language, calculate a list of possible codes.
+    """
+
     text_encode = remove_special_characters(text, alphabet)
     codes = list()
 
@@ -24,18 +26,26 @@ def cesar_decode(text: str, alphabet: dict) -> t.List[int]:
 
 
 def remove_special_characters(text: str, alphabet: dict) -> str:
+    """
+    Remove all the characters from the text that are not in the alphabet (only letters).
+    """
+
     format_text = io.StringIO()
-    
+
     for letter in text:
         if letter not in alphabet["letters"]:
             continue
 
         format_text.write(letter)
-    
+
     return format_text.getvalue()
 
 
 def decode_text(text: str, alphabet: dict) -> t.List[t.Tuple[str, int]]:
+    """
+    Try every possible code on the encoded text, and return the list of results along with the corresponding trial code.
+    """
+
     decoded_texts = list()
 
     codes = cesar_decode(text, alphabet)
@@ -59,17 +69,3 @@ def decode_text(text: str, alphabet: dict) -> t.List[t.Tuple[str, int]]:
 
         decoded_texts.append((decoded_text.getvalue(), code))
     return decoded_texts
-
-
-if __name__ == "__main__":
-    alphabet = alphabets[select_alphabet()]
-
-    coded_text = get_file()
-
-    text = io.StringIO()
-    for decoded_text, code in decode_text(coded_text, alphabet): 
-        text.write(f"Trying Code: {code}---------------------\n")
-        text.write(f"{decoded_text}\n\n")
-    print(text.getvalue(), end="")
-
-    save_file(text.getvalue())

@@ -1,10 +1,14 @@
 import random
 import io
 
-from pysalad.alphabets import alphabets
-from pysalad.user import yes_or_no_answer, select_alphabet, get_file, save_file
+from pysalad.user import yes_or_no_answer
 
 def code_text(code: int, text: str, alphabet: dict) -> str:
+    """
+    Move each letter of the text in the alphabet by the number of times specified in the code. 
+    Letters that are not in the alphabet are not encoded.
+    """
+
     coded_text = io.StringIO()
 
     for letter in text:
@@ -18,6 +22,11 @@ def code_text(code: int, text: str, alphabet: dict) -> str:
 
 
 def cesar_cipher(letter: str, code: int, alphabet: dict) -> str:
+    """
+    Move one letter in the alphabet by the number of times specified in the code.
+    Only works with letters in the alphabet.
+    """
+
     letter_num = alphabet["letter_to_num"][letter]
     new_letter_num = (letter_num[0] + code) % alphabet["len"]
 
@@ -28,6 +37,10 @@ def cesar_cipher(letter: str, code: int, alphabet: dict) -> str:
 
 
 def create_code(alphabet) -> int:
+    """
+    Provide the user with a code; if one is not given, then generate a random one.
+    """
+
     print("Create a random code?:")
     random_code = yes_or_no_answer()
 
@@ -47,16 +60,3 @@ def create_code(alphabet) -> int:
     print(f"The CODE is: {code}")
     print()
     return code
-
-
-if __name__ == "__main__":
-    alphabet = alphabets[select_alphabet()]
-
-    code = create_code(alphabet)
-    print(f"-------CODE: {code}------- ")
-
-    text = get_file()
-    coded_text = code_text(code, text, alphabet)
-    print(coded_text, "\n")
-
-    save_file(coded_text)
