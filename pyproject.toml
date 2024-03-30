@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.2", "wheel"]
+[project]
+name = "pysalad"
+version = "0.1.4"
+dependencies = []
+requires-python = ">=3.8"
+authors = [
+  {name = "OwO programmer", email = "gerardoowo.jovelfranco@gmail.com"}
+]
+maintainers = [
+  {name = "OwO programmer", email = "gerardoowo.jovelfranco@gmail.com"}
+]
+description = "pysalad is a simple python module that will allow you to encode and decode texts using the cesar cipher, the latter through basic statistics."
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+keywords = ["cesar cipher", "coder", "decoder", "cryptography", "utilities"]
+classifiers = [
+  'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Topic :: Security :: Cryptography',
+        'Topic :: Software Development :: Build Tools',
+        'Topic :: Utilities',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3',
+        'Environment :: Console'
+]
+
+[project.urls]
+Repository = "https://github.com/GerardoAJF/PySalad.git"
+
+[project.scripts]
+pysalad = "pysalad.__main__:main"
+
+[tool.setuptools.packages.find]
+exclude = ["assets*", "tests*"]
+

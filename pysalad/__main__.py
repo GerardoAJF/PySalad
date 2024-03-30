@@ -34,7 +34,7 @@ def cesar_decoder():
 
     save_file(text.getvalue())
 
-if __name__ == "__main__":
+def main():
     while True:
         print("Select an option: ")
         print("1. Cesar Coder")
@@ -57,3 +57,6 @@ if __name__ == "__main__":
 
         if option == "3":
             break
+        
+if __name__ == "__main__":
+    main()

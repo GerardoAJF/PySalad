@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/imgs/logo.svg" width="300px", alt="PySalad Logo">
+    <img src="https://github.com/GerardoAJF/PySalad/blob/main/assets/imgs/logo.svg" width="300px", alt="PySalad Logo">
 </p>
 
 <p align="center">
@@ -82,7 +82,7 @@ for decoded_text, tried_code in decoded_texts:
 Pysalad has a simple console line interface so you can use it from the terminal.
 
 <p>
-    <img src="assets/imgs/CLI.gif" alt="PySalad CLI">
+    <img src="https://github.com/GerardoAJF/PySalad/blob/main/assets/imgs/CLI.gif" alt="PySalad CLI">
 </p>
 
 You can access it just by running `pysalad`.
