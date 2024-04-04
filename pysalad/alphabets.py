@@ -1,3 +1,39 @@
+alphabets = dict()
+
+def add_alphabet(name: str, alphabet, common_letters):
+    """
+    Add a new alphabet to the alphabets dictionary.
+    You need to enter a list of all the letters of the alphabet and their variations, plus a list of the same but sorted by popularity.
+    
+    Example:
+    name: "sw"
+    alphabet: [("a", "A"), ("b", "B"), ...]
+    common_letters: [("e", "E"), ("a", "A"), ...]
+    """
+
+    alphabet_letters = tuple(letter for letters in alphabet for letter in letters)
+
+    alphabet_values = tuple(enumerate(alphabet))
+
+    alphabet_letter_to_num = dict()
+    alphabet_num_to_letter = dict()
+
+    for num, letters in alphabet_values:
+        for letter_num, letter in enumerate(letters):
+            alphabet_letter_to_num[letter] = (num + 1, letter_num)
+            alphabet_num_to_letter[(num + 1, letter_num)] = letter
+
+    alphabets[name] = {
+        "alphabet": alphabet,
+        "len": len(alphabet),
+        "letters": alphabet_letters,
+        "letter_to_num": alphabet_letter_to_num,
+        "num_to_letter": alphabet_num_to_letter,
+        "common_letters": common_letters,
+    }
+
+# ***********************************************************************************
+
 en_alphabet = (
     ("a", "A"),
     ("b", "B"),
@@ -27,18 +63,6 @@ en_alphabet = (
     ("z", "Z")
 )
 
-en_alphabet_letters = tuple(letter for letters in en_alphabet for letter in letters)
-
-en_alphabet_values = tuple(enumerate(en_alphabet))
-
-en_alphabet_letter_to_num = dict()
-en_alphabet_num_to_letter = dict()
-
-for num, letters in en_alphabet_values:
-    for letter_num, letter in enumerate(letters):
-        en_alphabet_letter_to_num[letter] = (num + 1, letter_num)
-        en_alphabet_num_to_letter[(num + 1, letter_num)] = letter
-
 en_common_letters = (
     ("e", "E"), 
     ("t", "T"), 
@@ -67,6 +91,8 @@ en_common_letters = (
     ("q", "Q"),
     ("z", "Z")
 )
+
+add_alphabet("en", en_alphabet, en_common_letters)
 
 # ***********************************************************************************
 
@@ -99,18 +125,6 @@ es_alphabet = (
     ("y", "Y"),
     ("z", "Z")
 )
-es_alphabet_letters = tuple(letter for letters in es_alphabet for letter in letters)
-
-es_alphabet_values = tuple(enumerate(es_alphabet))
-
-es_alphabet_letter_to_num = dict()
-es_alphabet_num_to_letter = dict()
-
-for num, letters in es_alphabet_values:
-    for letter_num, letter in enumerate(letters):
-        es_alphabet_letter_to_num[letter] = (num + 1, letter_num)
-        es_alphabet_num_to_letter[(num + 1, letter_num)] = letter
-
 
 es_common_letters = (
     ("e", "E", "é", "É"),
@@ -143,24 +157,4 @@ es_common_letters = (
     ("k", "K")
 )
 
-# ***********************************************************************************
-
-alphabets = {
-    "en": {
-        "alphabet": en_alphabet,
-        "len": len(en_alphabet),
-        "letters": en_alphabet_letters,
-        "letter_to_num": en_alphabet_letter_to_num,
-        "num_to_letter": en_alphabet_num_to_letter,
-        "common_letters": en_common_letters
-    },
-    "es": {
-        "alphabet": es_alphabet,
-        "len": len(es_alphabet),
-        "letters": es_alphabet_letters,
-        "letter_to_num": es_alphabet_letter_to_num,
-        "num_to_letter": es_alphabet_num_to_letter,
-        "common_letters": es_common_letters
-    }
-}
-
+add_alphabet("es", es_alphabet, es_common_letters)

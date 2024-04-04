@@ -5,8 +5,8 @@
 <p align="center">
     <img alt="Static Badge" src="https://img.shields.io/badge/Status-Beta-orange?style=for-the-badge">
     <img alt="Static Badge" src="https://img.shields.io/badge/Latest Stable Version-In Process-orange?style=for-the-badge">
-    <img alt="Static Badge" src="https://img.shields.io/badge/Latest Version-0.1-blue?style=for-the-badge">
-    <img alt="Static Badge" src="https://img.shields.io/badge/Package Version-0.1-purple?style=for-the-badge">
+    <img alt="Static Badge" src="https://img.shields.io/badge/Latest Version-0.2.0-blue?style=for-the-badge">
+    <img alt="Static Badge" src="https://img.shields.io/badge/Package Version-0.2.0-purple?style=for-the-badge">
     <img alt="Static Badge" src="https://img.shields.io/badge/License-MIT-red?style=for-the-badge&link=https%3A%2F%2Fopensource.org%2Flicense%2Fmit">
 </p>
 
@@ -125,7 +125,7 @@ print(coded_text)  # Ifmmp xpsme!, uijt b ufyu uibu J xbou up fodpef!
 print(salad.cesar_decode(coded_text, salad.alphabets["en"]))  # [16, 1, 20, 6, 12]
 ```
 
-**read_file** and **write_file** return and save the text of a file respectively.
+**read_file()** and **write_file()** return and save the text of a file respectively.
 
 ```python
 text = "Hello world from pysalad"
@@ -134,6 +134,8 @@ salad.write_file("text.txt", text)
 recovered_text = salad.read_file("text.txt")
 print(recovered_text)  # Hello world from pysalad
 ```
+
+**add_alphabet()** allows you to add new alphabets to the dictionary of alphabets.
 
 ### Alphabets
 
@@ -224,36 +226,13 @@ sw_common_letters = (
 )
 ```
 
-3 - We can obtain the missing lists using the following code:
+3 - We can now add the alphabet to the dictionary of alphabets using the **add_alphabet()** function.
 
 ```python
-sw_alphabet_letters = tuple(letter for letters in sw_alphabet for letter in letters)
-
-sw_alphabet_values = tuple(enumerate(sw_alphabet))
-
-sw_alphabet_letter_to_num = dict()
-sw_alphabet_num_to_letter = dict()
-
-for num, letters in sw_alphabet_values:
-    for letter_num, letter in enumerate(letters):
-        sw_alphabet_letter_to_num[letter] = (num + 1, letter_num)
-        sw_alphabet_num_to_letter[(num + 1, letter_num)] = letter
+salad.add_alphabet("sw", sw_alphabet, sw_common_letters)
 ```
 
-4 - We can now add the alphabet to the dictionary of alphabets.
-
-```python
-salad.alphabets["sw"] = {
-        "alphabet": sw_alphabet,
-        "len": len(sw_alphabet),
-        "letters": sw_alphabet_letters,
-        "letter_to_num": sw_alphabet_letter_to_num,
-        "num_to_letter": sw_alphabet_num_to_letter,
-        "common_letters": sw_common_letters
-    }
-```
-
-5 - We can test that it works correctly.
+4 - We can test that it works correctly.
 
 ```python
 text = "Jag älskar att gå längs älven på hösten."
