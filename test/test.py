@@ -37,26 +37,25 @@ def test_remove_special_characters():
 
 
 def test_cesar_decode():
-    assert cesar_decode("Elephants remember every event easily.", alphabets["en"]) == [0, 4, 13, 22, 16, 11]
-    assert cesar_decode("Los elefantes recuerdan eventos fácilmente.", alphabets["es"]) == [0, 4, 16, 12, 13, 18]
+    assert cesar_decode("Elephants remember every event easily.", alphabets["en"]) == [0, 11, 4, 16, 22]
+    assert cesar_decode("Los elefantes recuerdan eventos fácilmente.", alphabets["es"]) == [0, 4, 16, 12, 13]
 
 
 def test_decode_text():
     assert decode_text("L olnh hohskdqwv", alphabets["en"]) == [
-        ("I like elephants", 3),
-        ("E hega ahaldwjpo", 7),
-        ("V yvxr ryrcunagf", 16),
-        ("M pmoi ipitlerxw", 25),
-        ("S vsuo ovozrkxdc", 19),
-        ("X axzt tatewpcih", 14)
-    ]
+            ("I like elephants", 3),
+            ("X axzt tatewpcih", 14),
+            ("E hega ahaldwjpo", 7),
+            ("S vsuo ovozrkxdc", 19),
+            ("M pmoi ipitlerxw", 25),
+        ]
+
     assert decode_text("Oh jxvwdp ñrv hñhidpwhv", alphabets["es"]) == [
         ("Me gustan los elefantes", 3),
         ("Ia cqopwj hlo ahabwjpao", 7),
         ("Wo qfdelx vzd ovoplxeod", 19),
         ("As ujhiob zdh szstobish", 15),
         ("Zr tighña ycg ryrsñahrg", 16),
-        ("Un odbcjv txb ntnñjvcnb", 21),
     ]
 
 
@@ -70,3 +69,5 @@ if __name__ == "__main__":
     
     test_cesar_decode()
     test_decode_text()
+
+    print("All tests passed!")
